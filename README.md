@@ -15,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin http://localhost/novel_and_image/youtube.git
+git remote add origin http://mygitlab.ngrok.app/novel_and_image/youtube.git
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
-* [Set up project integrations](http://localhost/novel_and_image/youtube/-/settings/integrations)
+* [Set up project integrations](http://mygitlab.ngrok.app/novel_and_image/youtube/-/settings/integrations)
 
 ## Collaborate with your team
 
