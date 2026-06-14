@@ -1,93 +1,75 @@
-# youtube
+# YouTube 小說與影像內容專案
 
+本專案用於製作適合 YouTube 發布的繁體中文連載小說，整合故事設定、章節正文、TTS 朗讀稿、AI 生圖提示詞、縮圖素材與影片包裝資料。
 
+## 專案內容
 
-## Getting started
+- `AGENTS.md`：章回爽文生產規格，包含節奏、格式、品質檢查與 YouTube 包裝原則。
+- `novels/`：已整合或輸出的完整小說與有聲書文字檔。
+- `黑雨斷城/`：獨立作品目錄，包含故事 Bible、角色、時間線、求生知識與章節規劃。
+- `.gitlab-ci.yml`：既有 GitLab CI 安全檢查設定。若改用其他 Git 平台，可依需求保留、調整或移除。
+- `GIT_GUIDE.md`：本專案的 Git 日常操作與更換遠端教學。
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## 作品目錄規範
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+每部作品應使用獨立目錄，避免角色、設定與素材互相混用：
 
-## Add your files
-
-* [Create](https://docs.gitlab.com/user/project/repository/web_editor/#create-a-file) or [upload](https://docs.gitlab.com/user/project/repository/web_editor/#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
-
+```text
+作品名稱/
+  README.md
+  novel-bible/       # 世界觀、角色、劇情大綱、時間線
+  chapters/          # 小說正文，例如 ch001.md
+  audio-scripts/     # TTS 朗讀稿，例如 ch001-tts.md
+  image-prompts/     # AI 生圖提示詞
+  youtube/           # 標題、簡介、縮圖文字、Hashtags
+  assets/
+    thumbnails/
+    generated-images/
+    audio/
+    video/
 ```
-cd existing_repo
-git remote add origin http://mygitlab.ngrok.app/novel_and_image/youtube.git
-git branch -M main
-git push -uf origin main
+
+檔名使用小寫英文與三位數章號，例如 `ch001.md`、`ch001-prompts.md`。大型影音檔不宜直接提交至一般 Git 儲存庫，建議使用 Git LFS 或外部物件儲存服務。
+
+## 建議工作流程
+
+1. 在 `novel-bible/` 完成作品定位、角色與主線大綱。
+2. 將正文、朗讀稿、生圖提示詞與 YouTube 資料分開保存。
+3. 依 `AGENTS.md` 的品質清單檢查鉤子、爽點、懸念與 TTS 可讀性。
+4. 提交前執行：
+
+```bash
+git status --short
+git diff --check
+git diff
 ```
 
-## Integrate with your tools
+## GitHub 倉庫
 
-* [Set up project integrations](http://mygitlab.ngrok.app/novel_and_image/youtube/-/settings/integrations)
+本專案目前使用以下 GitHub 遠端倉庫：
 
-## Collaborate with your team
+```text
+https://github.com/Alex5025/youtube_novel_and_photo
+```
 
-* [Invite team members and collaborators](https://docs.gitlab.com/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/user/project/merge_requests/creating_merge_requests/)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+第一次下載專案：
 
-## Test and Deploy
+```bash
+git clone https://github.com/Alex5025/youtube_novel_and_photo.git
+cd youtube_novel_and_photo
+```
 
-Use the built-in continuous integration in GitLab.
+既有本機倉庫可使用以下指令確認連線：
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/topics/autodevops/requirements/)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ci/environments/protected_environments/)
+```bash
+git remote -v
+git branch --show-current
+```
 
-***
+提交、同步、分支與衝突處理方式請閱讀 [GIT_GUIDE.md](GIT_GUIDE.md)。
 
-# Editing this README
+## 內容與安全注意事項
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+- 不要提交 API Key、密碼、Token、Cookie 或未公開的私人資料。
+- 正式發布求生、急救或災害應變內容前，應以可靠官方來源再次查證。
+- 提交前確認素材授權，避免加入來源不明的圖片、音樂、字型或影片。
