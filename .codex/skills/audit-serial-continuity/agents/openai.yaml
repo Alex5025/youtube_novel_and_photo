@@ -1,0 +1,4 @@
+interface:
+  display_name: "連載品質檢查"
+  short_description: "檢查章節節奏、設定連續性、伏筆、角色成長與長篇連載品質"
+  default_prompt: "使用 $audit-serial-continuity 檢查指定章節與整體連載是否一致。"

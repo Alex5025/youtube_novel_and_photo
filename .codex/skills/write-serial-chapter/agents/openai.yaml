@@ -1,0 +1,4 @@
+interface:
+  display_name: "章節寫作"
+  short_description: "依作品設定撰寫節奏明確、具爽點與懸念的連載小說章節"
+  default_prompt: "使用 $write-serial-chapter 根據作品 Bible 撰寫下一章正文。"

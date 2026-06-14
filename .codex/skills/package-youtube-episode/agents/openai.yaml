@@ -1,0 +1,4 @@
+interface:
+  display_name: "YouTube 影片包裝"
+  short_description: "為小說分集建立標題、縮圖文字、簡介、標籤與置頂留言"
+  default_prompt: "使用 $package-youtube-episode 為指定章節建立完整 YouTube 包裝。"

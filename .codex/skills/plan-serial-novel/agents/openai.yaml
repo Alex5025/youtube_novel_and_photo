@@ -1,0 +1,4 @@
+interface:
+  display_name: "小說企劃"
+  short_description: "建立連載小說 Bible、角色、世界觀、能力系統與章節大綱"
+  default_prompt: "使用 $plan-serial-novel 建立這部連載小說的完整企劃與前十章大綱。"

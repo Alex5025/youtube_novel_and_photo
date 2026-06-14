@@ -1,0 +1,4 @@
+interface:
+  display_name: "小說生圖提示詞"
+  short_description: "依章節建立角色一致、場景清楚且適合影片使用的生圖提示詞"
+  default_prompt: "使用 $create-story-image-prompts 為指定章節產生一致的 16:9 生圖提示詞。"
